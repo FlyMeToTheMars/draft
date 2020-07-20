@@ -6,7 +6,11 @@
 
     <groupId>org.example</groupId>
     <artifactId>draft</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>FlinkTest</module>
+    </modules>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
