@@ -32,7 +32,7 @@ public class Node<E> {
         this(null, null);
     }
 
-    /* Setter & Getter */
+    /** Setter & Getter */
     public void setElem(E element) {
         this.elem = element;
     }
