@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
  * @create: 2020-07-22 23:02
  **/
 public class SingleLinkedList<E> {
+
     /**
      * 链表头节点
      */
