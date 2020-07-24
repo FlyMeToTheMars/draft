@@ -3,6 +3,7 @@ package com.hugh.datastructure.LinkedList.leecode;
 import com.hugh.datastructure.LinkedList.MySingleLinkedList;
 import com.hugh.datastructure.LinkedList.Node;
 import com.hugh.datastructure.LinkedList.SingleLinkedList;
+import com.hugh.datastructure.LinkedList.pojo.Person;
 
 /**
  * @program: draft
@@ -34,43 +35,36 @@ public class Intersection {
         System.out.println("--------blist---------");
         System.out.println(blist);
 
-        MySingleLinkedList<String> clist = new MySingleLinkedList<String>();
-        clist.addLast(new String("windows98"));
-        clist.addLast(new String("windows99"));
-        clist.addLast(new String("windows2000"));
-        clist.addLast(new String("linux"));
-        clist.addLast(new String("macOS"));
-        clist.addLast(new String("ubuntu"));
-        System.out.println("--------clist---------");
-        System.out.println(clist);
+        System.out.println("----------intersectionNodeString-----------");
+        Node intersectionNodeString = getIntersectionNode(alist.getFirst(), blist.getFirst());
+        System.out.println(intersectionNodeString.getElem());
 
-        MySingleLinkedList<String> dlist = new MySingleLinkedList<String>();
-        dlist.addLast(new String("windows91"));
-        dlist.addLast(new String("windows92"));
-        dlist.addLast(new String("windows93"));
-        dlist.addLast(new String("linux"));
-        dlist.addLast(new String("macOS"));
-        dlist.addLast(new String("ubuntu"));
-        System.out.println("--------dlist---------");
-        System.out.println(dlist);
 
-        System.out.println("----------getIntersectionNode-----------");
-        Node intersectionNode = getIntersectionNode(clist.getFirst(),dlist.getFirst());
-        System.out.println(intersectionNode.getElem());
 
-        String a = new String("123");
+/*        String a = new String("123");
         String b = new String("123");
 
         String a1 = "123";
         String b1 = "123";
         System.out.println(a == b);
-        System.out.println(a1 == b1);
+        System.out.println(a1 == b1);*/
+
+
     }
 
+    /*    private static Node getIntersectionNode(Node headA, Node headB) {
+            Node l1 = headA, l2 = headB;
+
+            while ( l1 != l2) {
+                l1 = (l1 == null) ? headB : l1.getNext();
+                l2 = (l2 == null) ? headA : l2.getNext();
+            }
+            return l1;
+        }*/
     private static Node getIntersectionNode(Node headA, Node headB) {
         Node l1 = headA, l2 = headB;
 
-        while ( l1 != l2) {
+        while (l1.getElem() != l2.getElem()) {
             l1 = (l1 == null) ? headB : l1.getNext();
             l2 = (l2 == null) ? headA : l2.getNext();
         }
