@@ -1,6 +1,8 @@
 package com.hugh.datastructure.LinkedList.pojo;
 
 import com.google.common.base.Objects;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * @program: draft
@@ -38,11 +40,11 @@ public class Person {
 
         Person person = (Person) o;
 
-        return getName() != null ? getName().equals(person.getName()) : person.getName() == null;
+        return getName().equals(person.getName());
     }
 
     @Override
     public int hashCode() {
-        return getName() != null ? getName().hashCode() : 0;
+        return getName().hashCode();
     }
 }

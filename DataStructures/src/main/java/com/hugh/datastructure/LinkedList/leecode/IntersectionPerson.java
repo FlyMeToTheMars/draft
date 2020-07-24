@@ -26,7 +26,7 @@ public class IntersectionPerson {
 
         MySingleLinkedList<Person> flist = new MySingleLinkedList<Person>();
 
-        flist.addLast(new Person("windows98"));
+//        flist.addLast(new Person("windows98"));
         flist.addLast(new Person("windows99"));
         flist.addLast(new Person("windows2000"));
         flist.addLast(new Person("linux"));
@@ -42,13 +42,19 @@ public class IntersectionPerson {
 
     private static Node getIntersectionNode(Node<Person> headA, Node<Person> headB) {
         Node<Person> l1 = headA, l2 = headB;
+        Person NULL = new Person("NULL");
+        Node<Person> l3 = new Node<Person>(NULL,headA);
 
         while (!(l1.getElem().equals(l2.getElem()))) {
 
-            System.out.println(l1 == null);
-            l1 = (l1 == null) ? headB : l1.getNext();
+            l1 = (l1 == l3) ? headB : l1.getNext();
+            if (l1 == null) l1 = l3;
+
             l2 = (l2 == null) ? headA : l2.getNext();
+            if (l2 == null) l2 = l3;
         }
+
         return l1;
     }
+
 }
