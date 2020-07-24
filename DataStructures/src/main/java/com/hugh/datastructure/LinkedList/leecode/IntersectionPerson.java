@@ -42,17 +42,13 @@ public class IntersectionPerson {
 
     private static Node getIntersectionNode(Node<Person> headA, Node<Person> headB) {
         Node<Person> l1 = headA, l2 = headB;
-//        System.out.println("l1:" + l1.getElem() + " l2:" + l2.getElem());
 
         while (!(l1.getElem().equals(l2.getElem()))) {
 
             System.out.println(l1 == null);
             l1 = (l1 == null) ? headB : l1.getNext();
-//            System.out.println(l2 == null);
             l2 = (l2 == null) ? headA : l2.getNext();
-//            System.out.println("l1:" + l1.getElem() + " l2:" + l2.getElem());
         }
-//        System.out.println("l1:" + l1 + " l2:" + l2);
         return l1;
     }
 }
