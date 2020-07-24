@@ -1,5 +1,7 @@
 package com.hugh.datastructure.LinkedList;
 
+import com.google.common.base.Objects;
+
 /**
  * @program: draft
  * @description: 单链表中节点（Node）
@@ -48,4 +50,17 @@ public class Node<E> {
     public Node<E> getNext() {
         return this.next;
     }
+
+/*    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node<?> node = (Node<?>) o;
+        return Objects.equal(elem, node.elem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(elem);
+    }*/
 }
