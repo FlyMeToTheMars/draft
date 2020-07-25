@@ -1,6 +1,4 @@
-package com.hugh.datastructure.LinkedList;
-
-import com.google.common.base.Objects;
+package com.hugh.datastructure.linkedlist;
 
 /**
  * @program: draft

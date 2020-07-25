@@ -1,8 +1,8 @@
-package com.hugh.datastructure.LinkedList.leecode;
+package com.hugh.datastructure.linkedlist.leecode.intersection;
 
-import com.hugh.datastructure.LinkedList.MySingleLinkedList;
-import com.hugh.datastructure.LinkedList.Node;
-import com.hugh.datastructure.LinkedList.pojo.Person;
+import com.hugh.datastructure.linkedlist.MySingleLinkedList;
+import com.hugh.datastructure.linkedlist.Node;
+import com.hugh.datastructure.linkedlist.pojo.Person;
 
 /**
  * @program: draft

@@ -1,6 +1,6 @@
 package com.hugh.datastructure;
 
-import com.hugh.datastructure.DLList.DoubleLinkedList;
+import com.hugh.datastructure.dllist.DoubleLinkedList;
 
 /**
  * @program: draft

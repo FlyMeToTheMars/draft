@@ -1,4 +1,4 @@
-package com.hugh.datastructure.DLList;
+package com.hugh.datastructure.dllist;
 
 /**
  * @program: draft

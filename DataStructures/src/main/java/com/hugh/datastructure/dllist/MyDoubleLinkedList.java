@@ -1,6 +1,6 @@
-package com.hugh.datastructure.DLList;
+package com.hugh.datastructure.dllist;
 
-import java.lang.IndexOutOfBoundsException;
+
 import java.util.NoSuchElementException;
 
 /**
@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * @author: Fly.Hugh
  * @create: 2020-07-22 23:46
  **/
-public class DoubleLinkedList<E> {
+public class MyDoubleLinkedList<E> {
     /**
      * 链表头节点
      */
@@ -22,7 +22,7 @@ public class DoubleLinkedList<E> {
      * 构造方法：创建空链表
      * @Param []
      */
-    public DoubleLinkedList() {
+    public MyDoubleLinkedList() {
         this.head = new DLNode<E>();
         this.tail = new DLNode<E>();
         head.setNext(tail);
@@ -36,7 +36,7 @@ public class DoubleLinkedList<E> {
      * @return Previous element
      * @throws IndexOutOfBoundsException
      */
-    public E insert(int index, E element)
+    public DLNode<E> insert(int index, E element)
             throws IndexOutOfBoundsException {
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
@@ -51,7 +51,7 @@ public class DoubleLinkedList<E> {
         node.setPrev(current.getPrev());
         current.getPrev().setNext(node);
         current.setPrev(node);;
-        return current.getNext() == null ? null : current.getElem();
+        return current.getNext() == null ? null : current;
     }
     /**
      * 移除双向链表指定元素，
@@ -70,7 +70,7 @@ public class DoubleLinkedList<E> {
      * @return Removed element
      * @throws IndexOutOfBoundsException
      */
-    public E remove(int index) throws IndexOutOfBoundsException {
+    public DLNode<E> remove(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -85,7 +85,7 @@ public class DoubleLinkedList<E> {
         node.getNext().setPrev(node.getPrev());
         node.setPrev(null);
         node.setNext(null);
-        return node.getElem();
+        return node;
     }
     /**
      * 为双向链表指定索引位置的元素设新值。
@@ -94,7 +94,7 @@ public class DoubleLinkedList<E> {
      * @return Previous element in the index.
      * @throws IndexOutOfBoundsException
      */
-    public E set(int index, E element) throws IndexOutOfBoundsException {
+    public DLNode<E> set(int index, E element) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -103,7 +103,7 @@ public class DoubleLinkedList<E> {
             node = node.getNext();
             --index;
         }
-        E oldElem = node.getElem();
+        DLNode<E> oldElem = node;
         node.setElem(element);
         return oldElem;
     }
@@ -113,7 +113,7 @@ public class DoubleLinkedList<E> {
      * @return element
      * @throws IndexOutOfBoundsException
      */
-    public E get(int index) throws IndexOutOfBoundsException {
+    public DLNode<E> get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -122,7 +122,7 @@ public class DoubleLinkedList<E> {
             node = node.getNext();
             --index;
         }
-        return node.getElem();
+        return node;
     }
     /**
      * 返回指定元素所在双向链表的索引位置。
@@ -164,7 +164,7 @@ public class DoubleLinkedList<E> {
      * @return Last element of this {@code DoubleLinkedList}.
      * @throws NoSuchElementException
      */
-    public E removeLast() throws NoSuchElementException {
+    public DLNode<E> removeLast() throws NoSuchElementException {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -173,7 +173,7 @@ public class DoubleLinkedList<E> {
         tail.setPrev(node.getPrev());
         node.setPrev(null);
         node.setNext(null);
-        return node.getElem();
+        return node;
     }
     /**
      * 移除并返回双向链表头部第一个元素。
@@ -181,7 +181,7 @@ public class DoubleLinkedList<E> {
      * @return First element of this {@code DoubleLinkedList}.
      * @throws NoSuchElementException
      */
-    public E removeFirst() throws NoSuchElementException {
+    public DLNode<E> removeFirst() throws NoSuchElementException {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -190,7 +190,7 @@ public class DoubleLinkedList<E> {
         head.setNext(node.getNext());
         node.setPrev(null);
         node.setNext(null);
-        return node.getElem();
+        return node;
     }
     /**
      * 向双向链表头部添加一个新元素。
@@ -224,11 +224,11 @@ public class DoubleLinkedList<E> {
      * @return First element of {@code DoubleLinkedList}.
      * @throws NoSuchElementException
      */
-    public E getFirst() throws NoSuchElementException {
+    public DLNode<E> getFirst() throws NoSuchElementException {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        return head.getNext().getElem();
+        return head.getNext();
     }
     /**
      * 取得双向链表尾部最后一个元素，链表为空则抛出异常。
@@ -236,11 +236,11 @@ public class DoubleLinkedList<E> {
      * @return Last element of {@code DoubleLinkedList}.
      * @throws NoSuchElementException
      */
-    public E getLast() throws NoSuchElementException {
+    public DLNode<E> getLast() throws NoSuchElementException {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        return tail.getPrev().getElem();
+        return tail.getPrev();
     }
     /**
      * 计算双向链表存储元素数量。

@@ -1,8 +1,4 @@
-package com.hugh.datastructure.LinkedList.pojo;
-
-import com.google.common.base.Objects;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+package com.hugh.datastructure.linkedlist.pojo;
 
 /**
  * @program: draft

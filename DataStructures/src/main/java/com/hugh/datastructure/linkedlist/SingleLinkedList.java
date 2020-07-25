@@ -1,4 +1,4 @@
-package com.hugh.datastructure.LinkedList;
+package com.hugh.datastructure.linkedlist;
 
 import java.util.NoSuchElementException;
 
