@@ -1,6 +1,8 @@
 package com.hugh.datastructure;
 
+import com.hugh.datastructure.dllist.MyDoubleLinkedList;
 import com.hugh.datastructure.linkedlist.MySingleLinkedList;
+import com.hugh.datastructure.linkedlist.SingleLinkedList;
 import com.hugh.datastructure.linkedlist.pojo.Person;
 
 import org.apache.logging.log4j.Level;
@@ -41,5 +43,15 @@ public class LinkedListUtils {
         }
         return mySingleLinkedList;
     }
+
+    public static MyDoubleLinkedList generateDoubleLinkList(Object... objects) {
+        MyDoubleLinkedList myDoubleLinkedList = new MyDoubleLinkedList();
+        for (Object o : objects) {
+            myDoubleLinkedList.addLast(o);
+        }
+        return myDoubleLinkedList;
+    }
+
+
 
 }
