@@ -2,6 +2,7 @@ package com.hugh.datastructure;
 
 import com.hugh.datastructure.dllist.MyDoubleLinkedList;
 import com.hugh.datastructure.linkedlist.MySingleLinkedList;
+import com.hugh.datastructure.linkedlist.Node;
 import com.hugh.datastructure.linkedlist.SingleLinkedList;
 import com.hugh.datastructure.linkedlist.pojo.Person;
 
@@ -50,6 +51,14 @@ public class LinkedListUtils {
             myDoubleLinkedList.addLast(o);
         }
         return myDoubleLinkedList;
+    }
+
+    public static void traverseLinkListFromFirst(Node node){
+        logger.info("开始根据头节点遍历链表的数组结构");
+        while (node != null) {
+            System.out.println(node.getElem());
+            node = node.getNext();
+        }
     }
 
 

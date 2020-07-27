@@ -1,4 +1,4 @@
-package com.hugh.datastructure.linkedlist.leecode.reverselinkedlist;
+package com.hugh.datastructure.linkedlist.leecode;
 
 import com.hugh.datastructure.LinkedListUtils;
 import com.hugh.datastructure.linkedlist.MySingleLinkedList;
@@ -19,6 +19,7 @@ public class MergeTwoSortedLists {
             System.out.println(node.getElem());
             node = node.getNext();
         }
+
     }
 
     /**

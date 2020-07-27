@@ -1,11 +1,8 @@
-package com.hugh.datastructure.linkedlist.leecode.reverselinkedlist;
+package com.hugh.datastructure.linkedlist.leecode;
 
 import com.hugh.datastructure.LinkedListUtils;
-import com.hugh.datastructure.dllist.DLNode;
-import com.hugh.datastructure.dllist.MyDoubleLinkedList;
 import com.hugh.datastructure.linkedlist.MySingleLinkedList;
 import com.hugh.datastructure.linkedlist.Node;
-import com.hugh.datastructure.linkedlist.pojo.Person;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
