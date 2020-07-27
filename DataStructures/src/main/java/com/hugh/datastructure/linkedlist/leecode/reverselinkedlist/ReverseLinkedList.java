@@ -15,6 +15,7 @@ import org.apache.logging.log4j.Logger;
  * @Version 1.0
  **/
 public class ReverseLinkedList {
+
     private static Logger logger = LogManager.getLogger(ReverseLinkedList.class.getName());
 
     public static void main(String[] args) {
@@ -23,8 +24,11 @@ public class ReverseLinkedList {
 
         System.out.println(list);
 
-        Node node = reverseIterativeltly(list.getFirst());
+        Node node = reverseList(list.getFirst());
 
+        /**
+         * 因为整个链表已经反转，所以只能根据新的头节点往下便利出新的节点。
+         */
         while (node != null) {
             System.out.println(node.getElem());
             node = node.getNext();
@@ -32,7 +36,7 @@ public class ReverseLinkedList {
     }
 
     /**
-     * 
+     *
      * @return com.hugh.datastructure.linkedlist.Node
      * @author Fly.Hugh
      * @Description 递归反转列表 head -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
@@ -42,13 +46,18 @@ public class ReverseLinkedList {
      **/
     public static Node reverseList(Node head) {
         logger.info("step1:" + head + " " + head.getElem());
-        if (head == null || head.getNext() == null || head.getNext().getElem() == null) {
+        if (head == null || head.getNext() == null) {
             return head;
         }
 
         Node next = head.getNext();
         Node newhead = reverseList(next);
-
+        /**
+         * 这里的 newhead 的赋值过程，在head = 9的时候，作为head Node类型返回
+         * 返回是9之后，这个9在每一次递归的过程中都在传递，因为不涉及newhead元素的再次赋值，只是简单的值传递，
+         * 所以一直到最后返回的都是9，也就是头节点。
+         * */
+        logger.info("newhead:" + newhead + " " + newhead.getElem());
         next.setNext(head);
         head.setNext(null);
 

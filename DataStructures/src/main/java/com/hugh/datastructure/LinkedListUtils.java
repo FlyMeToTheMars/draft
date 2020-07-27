@@ -38,7 +38,7 @@ public class LinkedListUtils {
         logger.info("链表生成中...");
         MySingleLinkedList mySingleLinkedList = new MySingleLinkedList();
         for (Object o : objects) {
-            logger.info("链表"+mySingleLinkedList+"添加了新元素:" + o);
+            logger.info("链表"+mySingleLinkedList+" 添加了新元素:" + o);
             mySingleLinkedList.addLast(o);
         }
         return mySingleLinkedList;
