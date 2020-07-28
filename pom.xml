@@ -11,6 +11,7 @@
     <modules>
         <module>FlinkTest</module>
         <module>DataStructures</module>
+        <module>StructuredStreaming</module>
     </modules>
 
     <properties>

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="FlinkTest" />
         <module name="DataStructures" />
+        <module name="StructuredStreaming" />
       </profile>
     </annotationProcessing>
   </component>
