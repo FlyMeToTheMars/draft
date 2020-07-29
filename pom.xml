@@ -12,6 +12,7 @@
         <module>FlinkTest</module>
         <module>DataStructures</module>
         <module>StructuredStreaming</module>
+        <module>MongoDB</module>
     </modules>
 
     <properties>
