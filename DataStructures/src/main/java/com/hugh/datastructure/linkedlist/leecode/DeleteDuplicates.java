@@ -16,7 +16,6 @@ public class DeleteDuplicates {
         System.out.println(node.getElem());
         LinkedListUtils.traverseLinkListFromFirst(node);
         System.out.println(listA);
-
     }
 
     private static Node deleteDuplicates(Node<Integer> head) {
