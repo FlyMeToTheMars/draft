@@ -307,5 +307,4 @@ public class MySingleLinkedList<E> {
         sb.append(']');
         return sb.toString();
     }
-
 }

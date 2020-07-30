@@ -12,12 +12,11 @@ import com.hugh.datastructure.linkedlist.Node;
  **/
 public class DeleteDuplicates {
     public static void main(String[] args) {
-        MySingleLinkedList listA = LinkedListUtils.generateSingleLinkList(1, 1, 2);
-/*        Node node = deleteDuplicates(listA.getFirst());
-        System.out.println(node.getElem());
+        MySingleLinkedList listA = LinkedListUtils.generateSingleLinkList(1, 1, 2, 3, 3, 3, 3, 5);
+        System.out.println(listA);
+        Node node = deleteDuplicatesThird(listA.getFirst());
         LinkedListUtils.traverseLinkListFromFirst(node);
-        System.out.println(listA);*/
-
+        System.out.println(listA);
     }
 
     private static Node deleteDuplicates(Node<Integer> head) {
@@ -33,11 +32,40 @@ public class DeleteDuplicates {
         }
     }
 
-    private static Node deleteDuplicates2(Node<Integer> head) {
-        if (head == null || head.getNext() == null) {
+    private static Node deleteDuplicatesAnother(Node<Integer> head) {
+        if (head == null || head.getNext() == null) return head;
+
+        if (head.getElem() == head.getNext().getElem()) {
+            head.setNext(deleteDuplicatesAnother(head.getNext()));
             return head;
+        } else {
+            head.setNext(deleteDuplicatesAnother(head.getNext()));
+            return head.getNext();
         }
-        head.setNext(deleteDuplicates2(head.getNext()));
-        return head.getElem() == head.getNext().getElem() ? head.getNext() : head;
+    }
+
+    private static Node<Integer> deleteDuplicatesThird(Node<Integer> head) {
+        if (head == null || head.getNext() == null) return head;
+
+        head.setNext(deleteDuplicatesThird(head.getNext()));
+
+        /**
+        * @author Fly.Hugh
+        * @Description 根据递归三问
+         * 第一问 终止条件是什么
+         * 第二问 本级递归需要做什么
+         * 第三问 返回值是什么
+         * 本题目中，根据递归三问，追溯到链表的最后，首先拿到了最后一个值
+         * 这个值跟前面一个值进行对比，如果相等话，应该返还哪一个呢？
+         * 肯定是返回后面一个的。
+         * 原因是我们设置的返回值同时设置了前面一个链表的next
+         * 如果我们返回第一个的话，等同于没有进行去重操作。
+         * 如果返回第二个的话等于把倒数第三个的next设置在了最后一个上面。
+         * 这样才是符合逻辑的。
+        * @Date 4:17 2020/7/31
+        * @Param [head]
+        * @return com.hugh.datastructure.linkedlist.Node<java.lang.Integer>
+        **/
+        return (head.getElem() == head.getNext().getElem()) ? head.getNext() : head;
     }
 }
