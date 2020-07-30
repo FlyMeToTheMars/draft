@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MongoDB" />
-        <module name="FlinkTest" />
         <module name="DataStructures" />
+        <module name="FlinkTest" />
+        <module name="MongoDB" />
         <module name="StructuredStreaming" />
       </profile>
     </annotationProcessing>

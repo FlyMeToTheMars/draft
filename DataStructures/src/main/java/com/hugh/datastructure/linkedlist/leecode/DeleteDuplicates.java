@@ -7,19 +7,22 @@ import com.hugh.datastructure.linkedlist.Node;
 /**
  * @Author Fly.Hugh
  * @Date 2020/7/27 7:16 下午
+ * @Desc 在有序链表中删除重复节点
  * @Version 1.0
  **/
 public class DeleteDuplicates {
     public static void main(String[] args) {
         MySingleLinkedList listA = LinkedListUtils.generateSingleLinkList(1, 1, 2);
-        Node node = deleteDuplicates(listA.getFirst());
+/*        Node node = deleteDuplicates(listA.getFirst());
         System.out.println(node.getElem());
         LinkedListUtils.traverseLinkListFromFirst(node);
-        System.out.println(listA);
+        System.out.println(listA);*/
+
     }
 
     private static Node deleteDuplicates(Node<Integer> head) {
         if (head.getNext() == null) return head;
+
         if (head.getElem() == head.getNext().getElem()) {
             head.setNext(head.getNext().getNext());
             head = deleteDuplicates(head);
@@ -28,5 +31,13 @@ public class DeleteDuplicates {
             head = deleteDuplicates(head.getNext());
             return head;
         }
+    }
+
+    private static Node deleteDuplicates2(Node<Integer> head) {
+        if (head == null || head.getNext() == null) {
+            return head;
+        }
+        head.setNext(deleteDuplicates2(head.getNext()));
+        return head.getElem() == head.getNext().getElem() ? head.getNext() : head;
     }
 }
