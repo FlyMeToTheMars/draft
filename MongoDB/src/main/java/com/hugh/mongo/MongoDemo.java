@@ -4,9 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.BasicDBObjectBuilder;
 import org.bson.Document;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -32,5 +30,23 @@ public class MongoDemo {
 
         String s = query.toJson();
         System.out.println(s);
+
+        HashSet<String> hs = new HashSet();
+
+        hs.add("10256");
+        hs.add("GT740");
+        System.out.println(hs.contains("10256"));
+
+        HashMap<String, List<String>> hm = new HashMap<>();
+        List<String> ls_10256 = Arrays.asList("GT740","GT770");
+        hm.put("10256",ls_10256);
+
+        boolean contains = hm.keySet().contains("10256");
+        System.out.println(contains);
+
+        boolean gt740 = hm.get("10256").contains("GT740");
+        System.out.println(gt740);
+
+
     }
 }
