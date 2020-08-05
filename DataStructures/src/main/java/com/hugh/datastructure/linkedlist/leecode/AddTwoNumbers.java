@@ -53,4 +53,31 @@ public class AddTwoNumbers {
 
         return res;
     }
+
+    /**
+    * @author Fly.Hugh
+    * @Description 这个情况要比上面的情况简单不少，少了一个过程，就是那个压栈 弹栈的过程。
+    * @Date 21:37 2020/8/5
+    * @Param [headA, headB]
+    * @return com.hugh.datastructure.linkedlist.Node
+    **/
+    private static Node addTwoNumbersEasy(Node<Integer> headA, Node<Integer> headB) {
+        Node nh = new Node(0, null);
+        int c = 0;
+        Node index = nh;
+
+        while (headA != null || headB != null || c > 0) {
+            int sum =
+                    ((headA == null) ? 0 : headA.getElem()) +
+                            ((headA == null) ? 0 : headA.getElem()) +
+                            c;
+            index.setNext(new Node(sum % 10, null));
+            index = index.getNext();
+            c = sum / 10;
+            if(headA != null) headA = headA.getNext();
+            if(headB != null) headB = headB.getNext();
+        }
+        if(c > 0) index.setNext(new Node(c,null));
+        return nh.getNext();
+    }
 }
