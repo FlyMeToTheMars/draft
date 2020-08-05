@@ -13,9 +13,10 @@ import java.util.Stack;
  **/
 public class AddTwoNumbers {
     public static void main(String[] args) {
-        MySingleLinkedList listA = LinkedListUtils.generateSingleLinkList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        MySingleLinkedList listB = LinkedListUtils.generateSingleLinkList(1,1,1,1,1,1);
-        Node node = addTwoNumbersMedium(listA.getFirst(), listB.getFirst());
+        MySingleLinkedList listA = LinkedListUtils.generateSingleLinkList(3, 9, 2, 5);
+        MySingleLinkedList listB = LinkedListUtils.generateSingleLinkList(4, 6, 2, 9);
+//        Node node = addTwoNumbersMedium(listA.getFirst(), listB.getFirst());
+        Node node = addTwoNumbersEasy(listA.getFirst(), listB.getFirst());
         LinkedListUtils.traverseLinkListFromFirst(node);
     }
 
@@ -23,6 +24,7 @@ public class AddTwoNumbers {
      * 说实话 我只想用递归来做这题
      * 但是递归并没有很好地办法来解决这个问题。
      * 这个问题里面引入了Java6 开始使用的Stack，stack可以作为一个新的知识点存入我的leeocode框架。
+     *
      * @param headA
      * @param headB
      * @return
@@ -43,7 +45,7 @@ public class AddTwoNumbers {
 
         Node res = null;
         int c = 0;
-        while(!s1.isEmpty() || !s2.isEmpty() || c > 0) {
+        while (!s1.isEmpty() || !s2.isEmpty() || c > 0) {
             int sum = (s1.isEmpty() ? 0 : s1.pop()) + (s2.isEmpty() ? 0 : s2.pop()) + c;
             Node n = new Node(sum % 10, null);
             c = sum / 10;
@@ -55,12 +57,12 @@ public class AddTwoNumbers {
     }
 
     /**
-    * @author Fly.Hugh
-    * @Description 这个情况要比上面的情况简单不少，少了一个过程，就是那个压栈 弹栈的过程。
-    * @Date 21:37 2020/8/5
-    * @Param [headA, headB]
-    * @return com.hugh.datastructure.linkedlist.Node
-    **/
+     * @return com.hugh.datastructure.linkedlist.Node
+     * @author Fly.Hugh
+     * @Description 这个情况要比上面的情况简单不少，少了一个过程，就是那个压栈 弹栈的过程。
+     * @Date 21:37 2020/8/5
+     * @Param [headA, headB]
+     **/
     private static Node addTwoNumbersEasy(Node<Integer> headA, Node<Integer> headB) {
         Node nh = new Node(0, null);
         int c = 0;
@@ -69,15 +71,15 @@ public class AddTwoNumbers {
         while (headA != null || headB != null || c > 0) {
             int sum =
                     ((headA == null) ? 0 : headA.getElem()) +
-                            ((headA == null) ? 0 : headA.getElem()) +
+                            ((headB == null) ? 0 : headB.getElem()) +
                             c;
             index.setNext(new Node(sum % 10, null));
             index = index.getNext();
             c = sum / 10;
-            if(headA != null) headA = headA.getNext();
-            if(headB != null) headB = headB.getNext();
+            if (headA != null) headA = headA.getNext();
+            if (headB != null) headB = headB.getNext();
         }
-        if(c > 0) index.setNext(new Node(c,null));
+        if (c > 0) index.setNext(new Node(c, null));
         return nh.getNext();
     }
 }
