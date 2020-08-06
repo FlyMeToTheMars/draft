@@ -51,7 +51,7 @@ public class ReverseLinkedList {
         Node newhead = reverseList(next);
         /**
          * 这里的 newhead 的赋值过程，在head = 9的时候，作为head Node类型返回
-         * 返回是9之后，这个9在每一次递归的过程中都在传递，因为不涉及newhead元素的再次赋值，只是简单的值传递，
+         * 返回是9之后，这个9在每一次递归的过程中都在传递，因为不涉及 newhead 元素的再次赋值，只是简单的值传递，
          * 所以一直到最后返回的都是9，也就是头节点。
          * */
         logger.info("newhead:" + newhead + " " + newhead.getElem());

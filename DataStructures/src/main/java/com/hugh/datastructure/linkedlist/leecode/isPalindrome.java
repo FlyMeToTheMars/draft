@@ -16,7 +16,10 @@ public class isPalindrome {
     public static void main(String[] args) {
         MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1,3);
 //        boolean flag = isPalindromeFirst(list.getFirst());
-        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
+
+//        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
+
+        boolean flag = new isPalindrome().isPalindromeThird(list.getFirst());
         System.out.println(flag);
     }
 
@@ -61,10 +64,7 @@ public class isPalindrome {
     }
     /**
     * 时间复杂度：O(n)
-     *    第一步： 遍历链表并将值复制到数组中，O(n)。
-     *    第二步：双指针判断是否为回文，执行了 O(n/2) 次的判断，即 O(n)。
-     *    总的时间复杂度：O(2n)=O(n)。
-     * 空间复杂度：O(n)，其中 n 指的是链表的元素个数，我们使用了一个数组列表存放链表的元素值。
+     *    di
     **/
 
 
@@ -127,6 +127,70 @@ public class isPalindrome {
 
 
     // <=================结束===================
+
+    // ==================第三种方法=====================>
+
+    /**
+    * @author Fly.Hugh
+    * @Description 第三种方案，为了实现空间复杂度O(n)
+     * 才用了一种更加复杂一点的方案
+     * 题解中此种解法分为了五个步骤
+     * 1 找到前半部分链表的尾节点。
+     * 2 反转后半部分链表。
+     * 3 判断是否为回文。
+     * 4 恢复链表。
+     * 5 返回结果。
+    * @Date 1:23 2020/8/7
+    * @Param [head]
+    * @return boolean
+    **/
+    private boolean isPalindromeThird(Node head) {
+
+        if (head == null) return true;              // 修正
+
+        Node firstHalfEnd  = endOfFirstHalf(head);
+        Node secondHalfStart  = reverseList(firstHalfEnd);
+
+        Node index1 = head;
+        Node index2 = secondHalfStart;
+        boolean flag = true;
+        while(flag && index2 != null) {                       // 修正，我原先用的是 head.getNext() != null，就变成了比对最后一位的值。
+            if(index1.getElem() != secondHalfStart.getElem()) {
+                flag = false;
+            }
+            secondHalfStart = secondHalfStart.getNext();
+            index1 = index1.getNext();
+        }
+
+        firstHalfEnd.setNext(reverseList(secondHalfStart));     // 修正 牛逼 牛大逼，自己的函数用两次，第一次的结果套进去再运行一次把链表指针的顺序改过来。
+
+        return flag;
+
+    }
+
+    private Node reverseList(Node head) {
+        if(head == null || head.getNext() == null) {
+            return head;
+        }
+        Node next = head.getNext();
+        Node newhead = reverseList(next);
+        next.setNext(head);
+        head.setNext(null);
+
+        return newhead;
+    }
+
+    // 这个节点找哪一个好，是第二个链表的开端还是第一个链表的结束，明显是第一个链表的结束好
+    private Node endOfFirstHalf(Node head) {
+        Node fast = head;
+        Node slow = head;
+
+        while(fast.getNext().getNext() != null && fast.getNext() != null) { // 这个判断 同时判断下一个fast和slow都不是null，是否有必要？ 如果fast是null slow不是的话，根本不成立回文啊。 应该最后还是会作用在上面。
+            slow = head.getNext();
+            fast = head.getNext().getNext();
+        }
+        return slow;
+    }
 
 
 }
