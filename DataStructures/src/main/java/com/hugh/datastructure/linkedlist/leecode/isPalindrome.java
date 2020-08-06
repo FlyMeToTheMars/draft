@@ -14,8 +14,9 @@ import java.util.ArrayList;
  **/
 public class isPalindrome {
     public static void main(String[] args) {
-        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1);
-        boolean flag = isPalindromeFirst(list.getFirst());
+        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1,3);
+//        boolean flag = isPalindromeFirst(list.getFirst());
+        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
         System.out.println(flag);
     }
 
@@ -66,18 +67,66 @@ public class isPalindrome {
      * 空间复杂度：O(n)，其中 n 指的是链表的元素个数，我们使用了一个数组列表存放链表的元素值。
     **/
 
+
+    // ================递归的第一种解法====================>
+
     /**
     * @author Fly.Hugh
     * @Description 为了解决更高要求的空间复杂度为O(n)
-     * 开始考虑用递归
+     * 开始考虑用递归，首先明确一点 用不用递归和空间复杂度没有绝对的关联
+     * 递归的思路现捋一下，本题的递归求解，本题的递归思路 大体上和上面的数组指针是一样的。
+     * 作为回文链表，从第一个节点开始往后遍历和递归到最后一个然后往前面递归比较，就可以，
+     * 回文链表的话应该完全相同
+     *
+     * 这里需要处理的问题就是：
+     * 如何在递归的过程中同时控制两边的指针比较。
+     *
+     * 这里不得不引入了一个外部变量，也就是这个外部变量把整个递归的空间复杂度从O(1)提升到了O(n).
+     *
     * @Date 4:40 2020/8/6
     * @Param [head]
     * @return boolean
     **/
-    private static boolean isPalindromeSecond(Node head) {
-
-        return false;
+    private boolean isPalindromeSecond(Node head) {
+        firstNode = head;
+        return compare(head);
     }
+
+    private Node firstNode;
+
+    /**
+     * 说实话 要分析一下这个递归 我并不是很懂。
+     * 我滴天，我到现在居然有看不太懂的递归，惭愧。
+     * 这个递归并不像之前的递归，之前我接触的递归返回的返回值总是Node
+     * 我总是拿到一个Node之后再进行操作。这样的思路似乎已经成为了公示，但是这里不是。
+     * 这里的递归返回值是bool类型，整体逻辑是这样的，这题不一样。
+     *
+     * 我居然对递归的概念还是有点不熟，
+     * 要知道当某一层递归出现了return的时候并不代表了就会直接跳出循环。
+     * 他会把返回值返回给上层，那么在本题中应该是个什么逻辑。
+     * -- 如果在递归的过程中，一旦出现了某一层递归返回的是false，
+     * 那么就要一直返回false到最后，如果是true，则无关紧要，这个逻辑和if
+     * 的逻辑正好相反。
+     * if(!flag(next)) = false; return true;
+     * 这就是 bool型递归的真谛。
+     * flag()就是函数本身，后面一级的函数返回上来的bool就是最后return的true，if true，
+     * 那么就不走这个if，继续走下面的逻辑，但是如果返回的是false，
+     * 就走这个逻辑然后一直走到跳出递归。也就是返回false。
+     *
+     * @param head
+     * @return
+     */
+    private boolean compare(Node<Integer> head){
+        if (head != null) {
+            if(!compare(head.getNext())) return false;
+            if (head.getElem() != firstNode.getElem()) return false;
+            firstNode = firstNode.getNext();
+        }
+        return true;
+    }
+
+
+    // <=================结束===================
 
 
 }
