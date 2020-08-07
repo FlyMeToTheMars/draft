@@ -15,7 +15,7 @@ import java.util.ArrayList;
  **/
 public class isPalindrome {
     public static void main(String[] args) {
-        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1,2,3,3,2,1);
+        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1,2,3);
 //        boolean flag = isPalindromeFirst(list.getFirst());
 
 //        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
