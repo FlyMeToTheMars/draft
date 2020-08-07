@@ -169,7 +169,7 @@ public class isPalindrome {
             index2 = index2.getNext();
         }
 
-        firstHalfEnd.setNext(reverseList_interpolation(secondHalfStart));     // 修正 牛逼 牛大逼，自己的函数用两次，第一次的结果套进去再运行一次把链表指针的顺序改过来。
+        firstHalfEnd.setNext(reverseList_interpolation(secondHalfStart));     // 修正 牛的 反转函数用两次，第一次的结果套进去再运行一次把链表指针的顺序改过来。
 
         return flag;
     }
