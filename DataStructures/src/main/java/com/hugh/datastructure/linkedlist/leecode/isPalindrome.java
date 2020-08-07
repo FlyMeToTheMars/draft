@@ -15,7 +15,7 @@ import java.util.ArrayList;
  **/
 public class isPalindrome {
     public static void main(String[] args) {
-        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1, 4);
+        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1);
 //        boolean flag = isPalindromeFirst(list.getFirst());
 
 //        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
@@ -229,6 +229,9 @@ public class isPalindrome {
          */
         Node slow = head;
         Node fast = head.getNext();
+
+        // 同样是因为head定义的不同，在head的另一种情况里面就不用考虑这个判断，作用在单个节点的情况下。
+        if(head.getNext() == null) return head;
 
         // fast.getNext() != null 理应放在前面
         while(fast.getNext() != null && fast.getNext().getNext() != null) {
