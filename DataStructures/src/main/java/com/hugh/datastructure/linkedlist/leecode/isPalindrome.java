@@ -3,6 +3,7 @@ package com.hugh.datastructure.linkedlist.leecode;
 import com.hugh.datastructure.LinkedListUtils;
 import com.hugh.datastructure.linkedlist.MySingleLinkedList;
 import com.hugh.datastructure.linkedlist.Node;
+import sun.awt.image.ImageWatched;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  **/
 public class isPalindrome {
     public static void main(String[] args) {
-        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1);
+        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1, 4);
 //        boolean flag = isPalindromeFirst(list.getFirst());
 
 //        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
@@ -22,10 +23,6 @@ public class isPalindrome {
         boolean flag = new isPalindrome().isPalindromeThird(list.getFirst());
         System.out.println(flag);
         System.out.println(list);
-
-
-
-
 /*
         MySingleLinkedList listRecursion = LinkedListUtils.generateSingleLinkList(1, 2, 3,4,5,6,7,8,9);
         Node<Integer> node = new isPalindrome().reverseList(listRecursion.getFirst());
@@ -160,28 +157,40 @@ public class isPalindrome {
         if (head == null) return true;              // 修正
 
         Node<Integer> firstHalfEnd  = endOfFirstHalf(head);
-        Node<Integer> secondHalfStart  = reverseList(firstHalfEnd);
-        System.out.println(firstHalfEnd.getElem() + "====" +secondHalfStart.getNext().getElem());
+        Node<Integer> secondHalfStart  = reverseList_interpolation(firstHalfEnd.getNext());
         LinkedListUtils.traverseLinkListFromFirst(head);
-
 
         Node<Integer> index1 = head;
         Node<Integer> index2 = secondHalfStart;
         boolean flag = true;
-        while(flag && index1 != null) {                       // 修正，我原先用的是 head.getNext() != null，就变成了比对最后一位的值。
+
+        while(flag && index2 != null) {                       // 修正，我原先用的是 head.getNext() != null，就变成了比对最后一位的值。 再修正，一开始用的index1 != null 会报错。 index1 遍历比index2多一位，这里面index1 和index2存在交点。
             if(index1.getElem() != index2.getElem()) {
                 flag = false;
             }
-            index2 = index2.getNext();
             index1 = index1.getNext();
+            index2 = index2.getNext();
         }
 
-        firstHalfEnd.setNext(reverseList(secondHalfStart));     // 修正 牛逼 牛大逼，自己的函数用两次，第一次的结果套进去再运行一次把链表指针的顺序改过来。
+        firstHalfEnd.setNext(reverseList_interpolation(secondHalfStart));     // 修正 牛逼 牛大逼，自己的函数用两次，第一次的结果套进去再运行一次把链表指针的顺序改过来。
 
         return flag;
     }
 
-    private Node reverseList(Node head) {                           //  首先要说明 我在这里使用递归肯定是错误的，因为再反转链表的时候使用递归就导致了空间复杂度到达了O(n)，整题的空间复杂度必然不可能小于这个值，其次，我这里的递归写的还有很大问题。
+    /**
+     * 首先要说明 我在这里使用递归肯定是错误的，因为反转链表的时候使用递归就导致了空间复杂度到达了O(n)，
+     * 整体的空间复杂度必然不可能小于这个值。
+     * 然后考虑功能，虽然递归能够做到翻转链表，
+     * 但是并没有切断第一段链表最后一个节点指向第二段头节点这个指向，也就是从理论上来说，
+     * 1 -> 2 -> 3 -> 3 -> 2 -> 1 变成了
+     * 1 -> 2 -> 3 -> 3 <- 2 <- 1
+     *
+     * 这里的这个特性主要是对上面值判断的时候非空判断提出了要求。
+     *
+     * @param head
+     * @return
+     */
+    private Node reverseList(Node head) {
         if(head == null || head.getNext() == null) {
             return head;
         }
@@ -193,10 +202,30 @@ public class isPalindrome {
         return newhead;
     }
 
+    /**
+     * 这里还是使用头插法来更换指针,
+     * 但是感觉并没有解决上面的问题？
+     * 我先试一下
+     *
+     * @param head
+     * @return
+     */
+    private Node reverseList_interpolation(Node head) {
+        Node pre = null;
+        Node cur = head;
+        while (cur != null) {
+            Node next = cur.getNext();
+            cur.setNext(pre);
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
     // 这个节点找哪一个好，是第二个链表的开端还是第一个链表的结束，明显是第一个链表的结束好
-    private Node endOfFirstHalf(Node head) {                                // 这个方法仍然有问题，某些情况下会报空指针
-        Node fast = head.getNext();
-        Node slow = head;                 //  这里的head是个精髓，head有两种情况，当head是真的head节点的时候 两者都等于head就可以实现模拟快慢指针，因为head是没有意义的，但是当head是first节点的时候 如果仍然用head的话，问题就来了，相当于slow和fast都走了相同距离的第一步！模拟一下第一种情况 相当于 slow走了第一步，fast已经走了两步。
+    private Node endOfFirstHalf(Node head) {
+        Node slow = head;
+        Node fast = head.getNext();                 //  这里的head是个精髓，head有两种情况，当head是真的head节点的时候 两者都等于head就可以实现模拟快慢指针，因为head是没有意义的，但是当head是first节点的时候 如果仍然用head的话，问题就来了，相当于slow和fast都走了相同距离的第一步！模拟一下第一种情况 相当于 slow走了第一步，fast已经走了两步。
 
         while(fast.getNext() != null && fast.getNext().getNext() != null) { // 这个判断 同时判断下一个fast和slow都不是null，是否有必要？ 如果fast是null slow不是的话，根本不成立回文啊。 应该最后还是会作用在上面。 注意！ fast.next 的判断必须放在前面。
             slow = slow.getNext();
@@ -205,6 +234,4 @@ public class isPalindrome {
         }
         return slow;
     }
-
-
 }
