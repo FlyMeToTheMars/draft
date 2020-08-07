@@ -14,13 +14,24 @@ import java.util.ArrayList;
  **/
 public class isPalindrome {
     public static void main(String[] args) {
-        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1,3);
+        MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1, 2, 3, 3, 2, 1);
 //        boolean flag = isPalindromeFirst(list.getFirst());
 
 //        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
 
         boolean flag = new isPalindrome().isPalindromeThird(list.getFirst());
         System.out.println(flag);
+        System.out.println(list);
+
+
+
+
+/*
+        MySingleLinkedList listRecursion = LinkedListUtils.generateSingleLinkList(1, 2, 3,4,5,6,7,8,9);
+        Node<Integer> node = new isPalindrome().reverseList(listRecursion.getFirst());
+        System.out.println(node.getElem());
+        LinkedListUtils.traverseLinkListFromFirst(node);*/
+
     }
 
     /**
@@ -144,31 +155,33 @@ public class isPalindrome {
     * @Param [head]
     * @return boolean
     **/
-    private boolean isPalindromeThird(Node head) {
+    private boolean isPalindromeThird(Node<Integer> head) {
 
         if (head == null) return true;              // 修正
 
-        Node firstHalfEnd  = endOfFirstHalf(head);
-        Node secondHalfStart  = reverseList(firstHalfEnd);
+        Node<Integer> firstHalfEnd  = endOfFirstHalf(head);
+        Node<Integer> secondHalfStart  = reverseList(firstHalfEnd);
+        System.out.println(firstHalfEnd.getElem() + "====" +secondHalfStart.getNext().getElem());
+        LinkedListUtils.traverseLinkListFromFirst(head);
 
-        Node index1 = head;
-        Node index2 = secondHalfStart;
+
+        Node<Integer> index1 = head;
+        Node<Integer> index2 = secondHalfStart;
         boolean flag = true;
-        while(flag && index2 != null) {                       // 修正，我原先用的是 head.getNext() != null，就变成了比对最后一位的值。
-            if(index1.getElem() != secondHalfStart.getElem()) {
+        while(flag && index1 != null) {                       // 修正，我原先用的是 head.getNext() != null，就变成了比对最后一位的值。
+            if(index1.getElem() != index2.getElem()) {
                 flag = false;
             }
-            secondHalfStart = secondHalfStart.getNext();
+            index2 = index2.getNext();
             index1 = index1.getNext();
         }
 
         firstHalfEnd.setNext(reverseList(secondHalfStart));     // 修正 牛逼 牛大逼，自己的函数用两次，第一次的结果套进去再运行一次把链表指针的顺序改过来。
 
         return flag;
-
     }
 
-    private Node reverseList(Node head) {
+    private Node reverseList(Node head) {                           //  首先要说明 我在这里使用递归肯定是错误的，因为再反转链表的时候使用递归就导致了空间复杂度到达了O(n)，整题的空间复杂度必然不可能小于这个值，其次，我这里的递归写的还有很大问题。
         if(head == null || head.getNext() == null) {
             return head;
         }
@@ -181,13 +194,14 @@ public class isPalindrome {
     }
 
     // 这个节点找哪一个好，是第二个链表的开端还是第一个链表的结束，明显是第一个链表的结束好
-    private Node endOfFirstHalf(Node head) {
-        Node fast = head;
-        Node slow = head;
+    private Node endOfFirstHalf(Node head) {                                // 这个方法仍然有问题，某些情况下会报空指针
+        Node fast = head.getNext();
+        Node slow = head;                 //  这里的head是个精髓，head有两种情况，当head是真的head节点的时候 两者都等于head就可以实现模拟快慢指针，因为head是没有意义的，但是当head是first节点的时候 如果仍然用head的话，问题就来了，相当于slow和fast都走了相同距离的第一步！模拟一下第一种情况 相当于 slow走了第一步，fast已经走了两步。
 
-        while(fast.getNext().getNext() != null && fast.getNext() != null) { // 这个判断 同时判断下一个fast和slow都不是null，是否有必要？ 如果fast是null slow不是的话，根本不成立回文啊。 应该最后还是会作用在上面。
-            slow = head.getNext();
-            fast = head.getNext().getNext();
+        while(fast.getNext() != null && fast.getNext().getNext() != null) { // 这个判断 同时判断下一个fast和slow都不是null，是否有必要？ 如果fast是null slow不是的话，根本不成立回文啊。 应该最后还是会作用在上面。 注意！ fast.next 的判断必须放在前面。
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+            System.out.println("slow => " + slow.getElem());
         }
         return slow;
     }
