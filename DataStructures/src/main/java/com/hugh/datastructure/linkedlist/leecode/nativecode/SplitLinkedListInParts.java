@@ -12,7 +12,7 @@ public class SplitLinkedListInParts {
     public static void main(String[] args) {
         SplitLinkedListInParts split = new SplitLinkedListInParts();
 
-        ListNode node = ListNodeUtils.generateLinkedList(1,2,3,4);
+        ListNode node = ListNodeUtils.generateLinkedList(1, 2, 3, 4);
         ListNode[] listNodes = split.splitListToParts(node, 5);
         System.out.println(listNodes);
     }
@@ -32,7 +32,7 @@ public class SplitLinkedListInParts {
         int index = 1;
         int arrIndex = 0;
         listNodeHead[0] = root;
-        while(root != null) {
+        while (root != null) {
             if (lengthenPartsCount > 0 && index % lengthenLength == 0) {
                 listNodeTail[arrIndex] = root;
                 arrIndex++;
@@ -48,13 +48,12 @@ public class SplitLinkedListInParts {
             index++;
         }
 
-        for (ListNode node:
+        for (ListNode node :
                 listNodeTail) {
             if (node != null && node.next != null) {
                 node.next = null;
             }
         }
-
         return listNodeHead;
     }
 
@@ -65,9 +64,6 @@ public class SplitLinkedListInParts {
             length++;
             root = root.next;
         }
-
         return length;
     }
-
-
 }
