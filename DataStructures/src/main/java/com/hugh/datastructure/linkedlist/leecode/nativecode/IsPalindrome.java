@@ -9,9 +9,9 @@ import com.hugh.datastructure.linkedlist.leecode.realex.ListNodeUtils;
  * @author: Fly.Hugh
  * @create: 2020-08-08 21:27
  **/
-public class isPalindrome {
+public class IsPalindrome {
     public static void main(String[] args) {
-        isPalindrome isPalindrome = new isPalindrome();
+        IsPalindrome isPalindrome = new IsPalindrome();
 
 /*        System.out.println("====================对findEndOfHalf的校验====================");
         ListNode head = ListNodeUtils.generateLinkedList(1,2,3,4,5,6,7);

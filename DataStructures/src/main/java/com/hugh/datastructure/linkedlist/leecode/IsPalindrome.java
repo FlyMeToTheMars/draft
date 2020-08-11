@@ -3,7 +3,6 @@ package com.hugh.datastructure.linkedlist.leecode;
 import com.hugh.datastructure.LinkedListUtils;
 import com.hugh.datastructure.linkedlist.MySingleLinkedList;
 import com.hugh.datastructure.linkedlist.Node;
-import sun.awt.image.ImageWatched;
 
 import java.util.ArrayList;
 
@@ -13,14 +12,14 @@ import java.util.ArrayList;
  * @author: Fly.Hugh
  * @create: 2020-08-06 03:35
  **/
-public class isPalindrome {
+public class IsPalindrome {
     public static void main(String[] args) {
         MySingleLinkedList list = LinkedListUtils.generateSingleLinkList(1,2,3);
 //        boolean flag = isPalindromeFirst(list.getFirst());
 
 //        boolean flag = new isPalindrome().isPalindromeSecond(list.getFirst());
 
-        boolean flag = new isPalindrome().isPalindromeThird(list.getFirst());
+        boolean flag = new IsPalindrome().isPalindromeThird(list.getFirst());
         System.out.println(flag);
         System.out.println(list);
 /*
