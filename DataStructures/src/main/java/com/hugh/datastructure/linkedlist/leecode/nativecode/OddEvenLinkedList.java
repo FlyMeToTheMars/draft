@@ -12,7 +12,7 @@ public class OddEvenLinkedList {
     public static void main(String[] args) {
         OddEvenLinkedList oddEvenLinkedList = new OddEvenLinkedList();
 
-        ListNode node = ListNodeUtils.generateLinkedList(2,1,3,5,6,4,7);
+        ListNode node = ListNodeUtils.generateLinkedList(1,2,3,4,5,6,7,8);
         ListNode listNode = oddEvenLinkedList.oddEvenList(node);
         ListNodeUtils.traverseLinkListFromFirst(listNode);
 
@@ -39,7 +39,7 @@ public class OddEvenLinkedList {
      * @param head
      * @return
      */
-    public ListNode oddEvenList(ListNode head) {
+/*    public ListNode oddEvenList(ListNode head) {
         if(head == null || head.next == null) {
             return head;
         }
@@ -62,5 +62,37 @@ public class OddEvenLinkedList {
         findOddLast.next = even;
 
         return odd;
+    }*/
+
+    /**
+    * @author Fly.Hugh
+    * @Description 上面是我自己的写法，下面这种更巧妙一点，生了一个变量并且少了一次递归
+    * @Date 20:47 2020/8/11
+    * @Param [head]
+    * @return com.hugh.datastructure.linkedlist.leecode.realex.ListNode
+    **/
+    public ListNode oddEvenList(ListNode head){
+        // 特判：头结点为 null，返回null
+        // head是奇链表的头
+        if (head == null) return null;
+
+        // odd是奇链表的当前节点，先初始化为head（初始化为奇链表头）
+        ListNode odd  = head;
+        // even是偶链表的当前节点，初始化为第二个节点也就是head.next
+        ListNode even = head.next;
+        // evenHead是偶链表的头节点，初始化为链表第二个节点（初始化为奇链表头的下一个节点）
+        ListNode evenHead = even;
+
+        while (even != null && even.next != null){
+            // 这里while退出判断条件还是画图一下才能理解（也就是官方题解的STEP2）
+            odd.next = even.next;  // 相当于odd.next = odd.next.next(跳过一个偶数节点)
+            odd = odd.next;        // odd向前前进一位
+            even.next = odd.next;   // 奇链表的下一个节点就是偶链表的节点
+            even = even.next;       // even向前前进一位
+        }
+        // while条件结束，把偶链表头指针拼接到奇链表的最后
+        odd.next = evenHead;
+        // 返回奇链表头就是返回整个奇偶排序后的链表
+        return head;
     }
 }
