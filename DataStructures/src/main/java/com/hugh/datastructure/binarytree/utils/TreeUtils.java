@@ -11,9 +11,8 @@ import java.util.Queue;
  **/
 public class TreeUtils {
     public static void main(String[] args) {
-        TreeNode treeNode = generateTreeFromArray(3,9,20,null,null,15,7);
-        System.out.println(treeNode.val);
-        preOrderTraverse(treeNode);
+        TreeNode treeNode = generateTreeFromArray(1,2,3,4,5,6,7);
+        postOrderTraverse(treeNode);
     }
 
     /**
@@ -76,7 +75,7 @@ public class TreeUtils {
     * @Param [root]
     * @return void
     **/
-    public void inOrderTraverse(TreeNode root) {
+    public static void inOrderTraverse(TreeNode root) {
         if (root != null) {
             inOrderTraverse(root.left);
             System.out.print(root.val+"  ");
@@ -91,7 +90,7 @@ public class TreeUtils {
     * @Param [root]
     * @return void
     **/
-    public void postOrderTraverse(TreeNode root) {
+    public static void postOrderTraverse(TreeNode root) {
         if (root != null) {
             postOrderTraverse(root.left);
             postOrderTraverse(root.right);
@@ -171,7 +170,6 @@ public class TreeUtils {
             if(null!=node.right) {
                 myQueue.add(node.right);
             }
-
         }
     }
 }

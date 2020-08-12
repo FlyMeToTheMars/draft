@@ -21,6 +21,8 @@ public class MaximumDepthOfBinaryTree {
     * @Description 又是一种全新的递归形式
      * 再接触几种递归应该就能总结出属于我自己的递归之道。
      * 每次有一层都会加一。
+     *
+     * 求二叉树的最大深度，根的深度是0，其实就是在求离根节点距离最远的叶节点的和根节点的距离。
     * @Date 7:04 2020/8/12
     * @Param [root]
     * @return int
