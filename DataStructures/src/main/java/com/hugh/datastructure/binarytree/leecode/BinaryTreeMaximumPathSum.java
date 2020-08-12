@@ -1,6 +1,7 @@
 package com.hugh.datastructure.binarytree.leecode;
 
 import com.hugh.datastructure.binarytree.utils.TreeNode;
+import com.hugh.datastructure.binarytree.utils.TreeUtils;
 
 /**
  * @Author Fly.Hugh
@@ -9,7 +10,10 @@ import com.hugh.datastructure.binarytree.utils.TreeNode;
  **/
 public class BinaryTreeMaximumPathSum {
     public static void main(String[] args) {
-
+        TreeNode root = TreeUtils.generateTreeFromArray(-10,9,20,null,null,15,7);
+        BinaryTreeMaximumPathSum binaryTreeMaximumPathSum = new BinaryTreeMaximumPathSum();
+        int i = binaryTreeMaximumPathSum.maxPathSum(root);
+        System.out.println(i);
     }
 
     /**
@@ -80,7 +84,6 @@ public class BinaryTreeMaximumPathSum {
      * 四种
      *
      * 一，二，三这几种情况都可以作为树的一个子树再计算，但第四种是不能作为一个子树再计算的
-     *
      * @param node
      * @return
      */
@@ -103,4 +106,9 @@ public class BinaryTreeMaximumPathSum {
         // 返回节点的最大贡献值
         return node.val + Math.max(leftGain, rightGain);
     }
+    /**
+     * 这题得递归手法是之前见过的，通过引入第三个变量来完成递归的输出。
+     * 在这个递归的过程中，原函数仅仅用来返回结果，递归另外起了一个函数，然后在这个另外起的函数里面进行递归
+     * 返回的值回到上面的left/right Gain里面继续参加下面的计算。
+     **/
 }
