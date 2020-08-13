@@ -12,7 +12,7 @@ import java.util.Queue;
 public class TreeUtils {
     public static void main(String[] args) {
         TreeNode treeNode = generateTreeFromArray(1,2,3,4,5,6,7);
-        postOrderTraverse(treeNode);
+        preOrderTraverse(treeNode);
     }
 
     /**
