@@ -12,7 +12,7 @@ import java.util.Queue;
 public class TreeUtils {
     public static void main(String[] args) {
         TreeNode treeNode = generateTreeFromArray(1,2,3,4,5,6,7);
-        preOrderTraverse(treeNode);
+        TreeUtils.depthOrderTraverse(treeNode);
     }
 
     /**
@@ -105,7 +105,7 @@ public class TreeUtils {
     * @Param [root]
     * @return void
     **/
-    public void levelTraverse(TreeNode root) {
+    public static void levelTraverse(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -130,7 +130,7 @@ public class TreeUtils {
     * @Param [root]
     * @return void
     **/
-    public void depthOrderTraverse(TreeNode root) {
+    public static void depthOrderTraverse(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -155,7 +155,7 @@ public class TreeUtils {
     * @Param [nodeHead]
     * @return void
     **/
-    public void BroadFirstSearch(TreeNode nodeHead) {
+    public static void broadFirstSearch(TreeNode nodeHead) {
         if(nodeHead==null) {
             return;
         }
