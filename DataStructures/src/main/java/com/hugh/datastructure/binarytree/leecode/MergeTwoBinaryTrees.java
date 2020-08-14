@@ -33,7 +33,7 @@ public class MergeTwoBinaryTrees {
         if (t2 == null) return t1;
         t1.val += t2.val;
         t1.left = mergeTrees(t1.left, t2.left);
-        t1.right = mergeTrees(t1.right, t2.right); // 这边的left 和 right还容易写错。。。。
+        t1.right = mergeTrees(t1.right, t2.right); // 这边的 left 和 right 还容易写错。。。。 其实想一下就知道了 left和left要放在一起才能下一步merge
         return t1;
     }
 }
