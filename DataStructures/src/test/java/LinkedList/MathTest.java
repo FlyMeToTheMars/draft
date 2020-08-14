@@ -8,7 +8,13 @@ package LinkedList;
  **/
 public class MathTest {
     public static void main(String[] args) {
-        Math.max(0,0);
+
+        Integer s = null;
+        Integer t = null;
+        System.out.println(s == null && t == null);
+        System.out.println(s == null || t == null);
+/*        if (s == null && t == null) return true;
+        if (s == null || t == null) return false;*/
 
     }
 }
