@@ -16,5 +16,10 @@ public class MathTest {
 /*        if (s == null && t == null) return true;
         if (s == null || t == null) return false;*/
 
+        for (int i = 0; i <= 1; i++) {
+            System.out.println("gogogoo");
+            System.out.println(i);
+        }
+
     }
 }
