@@ -54,7 +54,7 @@ public class FindBottomLeftTreeValue {
         while (!myQueue.isEmpty()) {
             root = myQueue.poll();
 
-            // 顺序很重要
+            // 顺序很重要 如果是Left的就放在前面
             if (root.right != null) {
                 myQueue.add(root.right);
             }
