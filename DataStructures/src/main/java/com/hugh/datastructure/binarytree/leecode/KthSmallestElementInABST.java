@@ -77,9 +77,13 @@ public class KthSmallestElementInABST {
      * @return
      */
     public int kthSmallestNiu(TreeNode root, int k) {
+        // 计算root左子树的节点个数
         int leftCnt = count(root.left);
+        // 如果左边子树节点个数 = k -1, 那么返回root.val
         if (leftCnt == k-1) return root.val;
+        // 如果左边的子树节点个数 > k - 1, 说明这个index应该在左边，在左边继续找。
         if (leftCnt > k-1) return kthSmallestNiu(root.left, k);
+        // 反之
         return kthSmallestNiu(root.right, k - leftCnt - 1);
     }
 
