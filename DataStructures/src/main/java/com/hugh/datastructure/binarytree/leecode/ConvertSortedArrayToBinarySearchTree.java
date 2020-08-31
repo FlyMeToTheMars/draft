@@ -32,15 +32,12 @@ public class ConvertSortedArrayToBinarySearchTree {
      *    /   /
      *  -10  5
      *
-     * 来源：力扣（LeetCode）
-     * 链接：https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree
-     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
     * @Date 21:57 2020/8/31
     * @Param [nums]
     * @return com.hugh.datastructure.binarytree.utils.TreeNode
     **/
     public TreeNode sortedArrayToBST(int[] nums) {
-        // 双指针控制角标
+        // 双指针控制角标， 不断得把数组分成两块，然后在分开的块中取中点继续赋值。
         return toBST(nums, 0, nums.length - 1);
     }
 
