@@ -50,6 +50,4 @@ public class ConvertSortedArrayToBinarySearchTree {
         root.right = toBST(nums, mIdex + 1, eIdex);
         return root;
     }
-
-
 }
