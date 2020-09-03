@@ -19,9 +19,11 @@ public class Trie {
         TrieNode p = root;
         for(int i = 0; i < word.length(); i ++) {
             char c = word.charAt(i);
+            // 对应位置上只要不是空就代表有值，并不需要填入某个确定的char，[c - 'a'] 代表了index
             if(p.child[c - 'a'] == null) {
                 p.child[c - 'a'] = new TrieNode();
             }
+            // 有点类似与二叉树的node = node.next;
             p = p.child[c - 'a'];
         }
         p.isEnd = true;

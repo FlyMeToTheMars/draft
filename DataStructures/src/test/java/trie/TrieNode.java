@@ -6,8 +6,11 @@ package trie;
  * @Version 1.0
  **/
 public class TrieNode {
+
     TrieNode[] child;
+
     boolean isEnd;
+
     public TrieNode() {
         this.child = new TrieNode[26];
         this.isEnd = false;
