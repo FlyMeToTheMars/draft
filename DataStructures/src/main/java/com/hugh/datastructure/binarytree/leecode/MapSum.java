@@ -27,7 +27,10 @@ public class MapSum {
     * @return void
     **/
     public static void main(String[] args) {
-
+        MapSum mapSum = new MapSum();
+        mapSum.insert("apple", 3);
+        int a = mapSum.sum("ap");
+        System.out.println(a);
     }
 
     private class Node {
@@ -46,6 +49,7 @@ public class MapSum {
         insert(key, root, val);
     }
 
+    // 这个insert仅仅在每个单词结尾加上了val
     private void insert(String key, Node node, int val) {
         if (node == null) return;
 
@@ -53,7 +57,6 @@ public class MapSum {
             node.value = val;
             return;
         }
-
         int index = indexForChar(key.charAt(0));
 
         if (node.child[index] == null) {
@@ -70,9 +73,11 @@ public class MapSum {
         if (node == null) return 0;
         if (prefix.length() != 0) {
             int index = indexForChar(prefix.charAt(0));
+            // 这里的递归仅仅为了找到predix最后的值。
             return sum(prefix.substring(1), node.child[index]);
         }
         int sum = node.value;
+        // 这里的 for 循环，因为上面的prefix.length()总是0，不再作用，所以遍历了prefix后面的所有尾节点里面的val然后相加了。
         for (Node child : node.child) {
             sum += sum(prefix, child);
         }
