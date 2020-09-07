@@ -11,6 +11,7 @@
         <module name="StructuredStreaming" />
         <module name="MongoDB" />
         <module name="DataStructures" />
+        <module name="DroolsDemo" />
         <module name="FlinkTest" />
       </profile>
     </annotationProcessing>

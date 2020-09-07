@@ -12,6 +12,7 @@
         <module>DataStructures</module>
         <module>StructuredStreaming</module>
         <module>MongoDB</module>
+        <module>DroolsDemo</module>
     </modules>
 
     <properties>

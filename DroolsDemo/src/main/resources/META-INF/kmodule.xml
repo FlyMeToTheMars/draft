@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+
+    <kbase name="HouseOfDoomKB" packages="rules">
+        <ksession name="HouseOfDoomKS"/>
+    </kbase>
+
+    <kbase name="HelloWorldKB" packages="rules">
+        <ksession name="HelloWorldKS"/>
+    </kbase>
+
+</kmodule>
