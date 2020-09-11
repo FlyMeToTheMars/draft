@@ -1,16 +1,18 @@
-package leecode;
+package com.hugh.dynamicprogramming.helloworld;
 
 /**
  * @Author Fly.Hugh
  * @Date 2020/9/11 10:15
  * @Version 1.0
  **/
-public class Coin2 {
+public class Coin1 {
     public static void main(String[] args) {
         int[] coins = {1, 2, 5};
-        int amount = 11;
+        int amount = 100;
 
-        int count = new Coin2().coinChange(coins, amount);
+        System.out.println(System.currentTimeMillis());
+        int count = new Coin1().coinChange(coins, amount);
+        System.out.println(System.currentTimeMillis());
         System.out.println(count);
     }
 
