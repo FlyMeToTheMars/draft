@@ -1,4 +1,4 @@
-package com.hugh.dynamicprogramming.helloworld;
+package com.hugh.dynamicprogramming.coin;
 
 import java.util.Arrays;
 

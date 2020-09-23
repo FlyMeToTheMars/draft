@@ -1,4 +1,4 @@
-package com.hugh.dynamicprogramming.helloworld;
+package com.hugh.dynamicprogramming.coin;
 
 /**
  * @Author Fly.Hugh
