@@ -77,6 +77,4 @@ public class Regex {
         }
         return dp[str.length][ptr.length];
     }
-
-
 }
