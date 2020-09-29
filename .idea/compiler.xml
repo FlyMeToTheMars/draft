@@ -8,13 +8,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="FlinkTest" />
         <module name="DesignPattern" />
         <module name="StructuredStreaming" />
         <module name="MongoDB" />
         <module name="DataStructures" />
         <module name="DroolsDemo" />
-        <module name="FlinkTest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Flink-Drools" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
