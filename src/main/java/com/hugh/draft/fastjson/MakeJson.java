@@ -10,7 +10,7 @@ import java.util.Date;
  * @Date 2020/7/16 2:03 下午
  * @Version 1.0
  **/
-public class makeJson {
+public class MakeJson {
     public static void main(String[] args) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("imei", "123456789");
