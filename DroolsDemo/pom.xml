@@ -11,7 +11,7 @@
     <artifactId>DroolsDemo</artifactId>
 
     <properties>
-        <drools.verson>7.42.0.Final</drools.verson>
+        <drools.verson>7.60.0.Final</drools.verson>
     </properties>
 
     <dependencies>
